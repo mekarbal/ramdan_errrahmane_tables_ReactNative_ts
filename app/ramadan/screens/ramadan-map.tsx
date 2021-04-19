@@ -23,6 +23,7 @@ export function RamadanMap() {
           longitudeDelta : 0.0121 
         }}
         >
+          
             {/* <Marker coordinate = {coordinates_marker}/> */}
         </MapView>
         <Text style={styles.text}>  {ramadanMapsEnum.Card}  :) </Text>

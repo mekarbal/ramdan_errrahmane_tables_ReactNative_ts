@@ -27,7 +27,7 @@ export function RamadanHome() {
     }
   return (
     <View style={styles.container}>
-        <Text> Test Booked : {ramadanEnum.BOOKED} & Test Free : {ramadanEnum.FREE}</Text>
+        <Text> Test Booked : {ramadanEnum.BOOKED} &  Free : {ramadanEnum.FREE}</Text>
       <Text> {(username === '') ? '' : 'Bonjour, Je suis : '+ username} </Text>
 
       <Text> {(message === '') ? '' : 'Mon message est : '+ message} </Text>
