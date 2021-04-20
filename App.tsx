@@ -32,8 +32,22 @@ export default function App() {
         <StatusBar style="auto" />
        <Stack.Navigator>
         
-        <Stack.Screen name="Home" component={ListNavigation} /> 
-        <Stack.Screen name="Assistance" component={AddAssistance} /> 
+        <Stack.Screen name="Home" component={ListNavigation}  options={{
+          title: "Home",
+          headerTintColor:'white',
+          headerStyle:{
+            backgroundColor: '#057385',
+          }, 
+          headerTitleStyle: { alignSelf: 'center' },
+        }}/> 
+        <Stack.Screen name="Assistance" component={AddAssistance} options={{
+          title: "Add Assistance",
+          headerTintColor:'white',
+          headerStyle:{
+            backgroundColor: '#057385',
+          }, 
+          headerTitleStyle: { alignSelf: 'center',margin:2 },
+        }} /> 
         
       </Stack.Navigator>
       </View>
