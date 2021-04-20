@@ -2,6 +2,8 @@ import { AuthI } from '../interfaces/auth-i';
 
 export class Auth implements AuthI {
     id: number;
+    first_name: string;
+    last_name: string;
     email: string;
     password: string;
 

@@ -1,18 +1,18 @@
 import React,{useEffect} from 'react';
 import {
-    ScrollView,StyleSheet,Text,View,
-    TextInput,Button,Alert,TouchableOpacity,
-    Image
+    ScrollView,StyleSheet,Text,
+    TextInput,Alert,
+    Image,Linking
 } from 'react-native';
 import { Auth } from '../../shared/models/auth.model'
 import {AuthEnum} from '../../shared/enums/auth.enum';
 import { auth } from 'react-native-firebase';
-// const {logo} = require('../../../assets/logo.jpg') 
+import ButtonShared from '../../shared/components/ButtonShared';
 // import { RamadanController } from './controllers/ramadan-controller';
 
-export function SignIn() {
+export function SignIn(props:any) {
     // let ramadanController = new  RamadanController();
-    let authEnum = AuthEnum;
+    // let authEnum = AuthEnum;
     
     const [email, onChangeEmail] = React.useState(""); 
     const [password, onChangePassword] = React.useState("");
@@ -26,13 +26,20 @@ export function SignIn() {
 
         // ramadanController.Add(ramadan);
     }
+    function navigateToSignUp() {
+        props.navigation.navigate('Sign up')
+    }
+
+    function navigateToHome() {
+        props.navigation.navigate('Home')
+    }
     return (
         <ScrollView style={styles.container}>
             {/* <Text>  {authEnum.BOOKED}  {authEnum.FREE}</Text> */}
             {/* <Text> {(email === '') ? '' : 'Bonjour, Je suis : '+ email} </Text> */}
 
             {/* <Text> {(password === '') ? '' : 'Mon password est : '+ password} </Text> */}
-            <Image source={require('../../../assets/logo.png')} style={{}} />
+            <Image source={require('../../../assets/logo.png')} />
             <TextInput
                 style={styles.input}
                 placeholder={'exemple@gmail.co'}
@@ -44,20 +51,18 @@ export function SignIn() {
                 style={styles.input}
                 placeholder={'********'}
                 placeholderTextColor="white"
+                secureTextEntry={true}
                 onChangeText={onChangePassword}
                 value={password}
             />
-            <TouchableOpacity style={styles.btnSign}>
-                <Button
-                    color="#B50045"
-                    title="SIGN IN"
-                    onPress={() => {
-                        Alert.alert('Sign in');
-                        add()
-                    }}
-                />
-            </TouchableOpacity>
-            <Text style={styles.signLink}>Don't have an account yet? Sign Up</Text>
+            <ButtonShared text="SIGN IN"
+                onPress={() => navigateToHome()}
+            /> 
+            <Text style={styles.signLink}>Don't have an account yet ? 
+                <Text style={styles.toSignUp} onPress={() =>navigateToSignUp()}>
+                    Sign Up
+                </Text>
+            </Text>
         </ScrollView>
     );
 }
@@ -69,8 +74,9 @@ export function Test(){
 const styles = StyleSheet.create({
     container: {
         padding:30,
-        borderRadius:40,
         minWidth:370,
+        backgroundColor:'skyblue'
+
 
     },
     input: {
@@ -81,15 +87,14 @@ const styles = StyleSheet.create({
         borderBottomColor:'#fff',
 
     },
-    btnSign: {
-        marginTop:10,
-        marginBottom:10,
-        marginLeft:30,
-        marginRight:30,
-        borderRadius:30
-    },
     signLink: {
-        margin:30,
+        marginTop:15,
         color:'#fff',
+        marginBottom:80,
+        textAlign:'right',
+    },
+    toSignUp :{
+        fontWeight: 'bold',
+        color: 'red',
     }
 });
