@@ -60,7 +60,7 @@ export function SignIn(props:any) {
             /> 
             <Text style={styles.signLink}>Don't have an account yet ? 
                 <Text style={styles.toSignUp} onPress={() =>navigateToSignUp()}>
-                    Sign Up
+                    &nbsp; Sign Up
                 </Text>
             </Text>
         </ScrollView>

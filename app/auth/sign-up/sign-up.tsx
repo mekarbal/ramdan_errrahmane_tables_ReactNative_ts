@@ -73,9 +73,9 @@ export function SignUp(props:any) {
                     add()
                 }}
             /> 
-            <Text style={styles.signLink}>Don't have an account yet ? 
+            <Text style={styles.signLink}>Have an account ? 
                 <Text style={styles.toSignUp} onPress={() =>navigateToSignUp()}>
-                    Sign Up
+                    &nbsp; Sign In
                 </Text>
             </Text>
         </ScrollView>
@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
         marginTop:15,
         color:'#fff',
         marginBottom:80,
+        textAlign:'right',
     },
     toSignUp :{
         fontWeight: 'bold',

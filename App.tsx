@@ -31,14 +31,43 @@ export default function App() {
     <NavigationContainer>
  
      <View style={styles.container}>
-        <StatusBar style="auto" />
+        <StatusBar style="auto"/>
         <Stack.Navigator>
-          <Stack.Screen name="Sign in" component={SignIn} /> 
-          <Stack.Screen name="Sign up" component={SignUp} /> 
-          <Stack.Screen name="Home" component={ListNavigation} /> 
-          <Stack.Screen name="Assistance" component={AddAssistance} /> 
+          <Stack.Screen name="Sign in" component={SignIn} 
+          options={{
+          title: "Sign in",
+          headerTintColor:'white',
+          headerStyle:{
+            backgroundColor: 'skyblue',
+          }, 
+        }}/> 
+          <Stack.Screen name="Sign up" component={SignUp} 
+          options={{
+          title: "Sign up",
+          headerTintColor:'white',
+          headerStyle:{
+            backgroundColor: 'skyblue',
+          }, 
+        }}/> 
           
-        </Stack.Navigator>
+        
+        
+        <Stack.Screen name="Home" component={ListNavigation}  options={{
+          title: "Home",
+          headerTintColor:'white',
+          headerStyle:{
+            backgroundColor: 'skyblue',
+          }, 
+        }}/> 
+        <Stack.Screen name="Assistance" component={AddAssistance} options={{
+          title: "Add Assistance",
+          headerTintColor:'white',
+          headerStyle:{
+            backgroundColor: 'skyblue',
+          }, 
+        }} /> 
+        
+      </Stack.Navigator>
       </View>
     </NavigationContainer>
   );

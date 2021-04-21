@@ -4,12 +4,12 @@ import {Button} from 'react-native-paper'
 const ButtonShared = (props:any) => {
     return (
         <View>            
-        <TouchableOpacity
-        style={styles.button}
-        onPress={props.onPress}
-      >
-        <Text style={{color:'white',fontSize:16}}>{props.text}</Text>
-      </TouchableOpacity>
+          <TouchableOpacity
+          style={styles.button}
+          onPress={props.onPress}
+          >
+          <Text style={{color:'white',fontSize:16}}>{props.text}</Text>
+        </TouchableOpacity>
       </View>
     )
 }
@@ -23,6 +23,5 @@ const styles = StyleSheet.create({
       padding: 10,
       marginTop: 45,
       borderRadius: 30,
-      borderColor: "#F6A90D",
     }
   });
