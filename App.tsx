@@ -9,6 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {SignIn} from './app/auth/sign-in/sign-in';
 import {SignUp} from './app/auth/sign-up/sign-up';
+import AddBreakfast from './app/breakfasts/screens/AddBreakfast';
 
 
 // var firebaseConfig = {
@@ -22,7 +23,7 @@ import {SignUp} from './app/auth/sign-up/sign-up';
 // };
 
 // Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 const Stack=createStackNavigator()
 
@@ -60,8 +61,16 @@ export default function App() {
             backgroundColor: 'skyblue',
           }, 
         }}/> 
+        
         <Stack.Screen name="Assistance" component={AddAssistance} options={{
           title: "Add Assistance",
+          headerTintColor:'white',
+          headerStyle:{
+            backgroundColor: 'skyblue',
+          }, 
+        }} /> 
+        <Stack.Screen name="Assist" component={AddBreakfast} options={{
+          title: "Add Brak fast",
           headerTintColor:'white',
           headerStyle:{
             backgroundColor: 'skyblue',

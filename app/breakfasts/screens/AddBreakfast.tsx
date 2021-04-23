@@ -2,23 +2,25 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, ImageBackground, Alert } from "react-native";
 import { TextInput } from "react-native-paper";
 import ButtonShared from "../../shared/components/ButtonShared";
-import add from "../services/assistance.service";
-const AddAssistance = (props:any) => {
+import {add,getAllBfs} from "../services/breakfast.service";
+const AddBreakfast = (props:any) => {
   const [description, setDescription] = useState<string>("");
   const [latitude, setLatitude] = useState<string>("");
   const [longitude, setLongitude] = useState<string>("");
   const [city, setCity] = useState<string>("");
   const [places, setPlaces] = useState<string>("");
 
-  const addAssistance = () => {
+  const addbf = () => {
     if (latitude==="" || longitude==="" || city==='' || places==='' ||description==='') {
-     Alert.alert('All fields are required');
-      
-    }else{
-      add(description, Number(longitude), Number(latitude), city, Number(places));
-    props.navigation.navigate('Home')
-    }
+      Alert.alert('All fields are required');
+       
+     }else{
+       
+       add(description, Number(longitude), Number(latitude), city, Number(places));
+       props.navigation.navigate('Home')
+     }
   };
+  
   const image = {
     uri:
       "https://www.lopinion.ma/photo/art/grande/55426126-41491399.jpg?v=1618175034",
@@ -67,13 +69,13 @@ const AddAssistance = (props:any) => {
           onChangeText={(text) => setPlaces(text)}
         />
 
-        <ButtonShared text="Add Assistance" onPress={() => addAssistance()} />
+        <ButtonShared text="Add Assistance" onPress={() => addbf()} />
       </View>
     </View>
   );
 };
 
-export default AddAssistance;
+export default AddBreakfast;
 
 const styles = StyleSheet.create({
   gobal: {
