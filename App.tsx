@@ -11,15 +11,16 @@ import {SignIn} from './app/auth/sign-in/sign-in';
 import {SignUp} from './app/auth/sign-up/sign-up';
 
 
-var firebaseConfig = {
-  apiKey: "AIzaSyAP2O_RSdni3pwPbK_cgKuv7UIChwSrXcE",
-  authDomain: "errahmanetable.firebaseapp.com",
-  projectId: "errahmanetable",
-  storageBucket: "errahmanetable.appspot.com",
-  messagingSenderId: "223055466573",
-  appId: "1:223055466573:web:50cbe6868b9d1a38860c04",
-  measurementId: "G-7LQL2MVEBW"
-};
+// var firebaseConfig = {
+//   apiKey: "AIzaSyAP2O_RSdni3pwPbK_cgKuv7UIChwSrXcE",
+//   authDomain: "errahmanetable.firebaseapp.com",
+//   projectId: "errahmanetable",
+//   storageBucket: "errahmanetable.appspot.com",
+//   messagingSenderId: "223055466573",
+//   appId: "1:223055466573:web:50cbe6868b9d1a38860c04",
+//   measurementId: "G-7LQL2MVEBW"
+// };
+
 // Initialize Firebase
 // firebase.initializeApp(firebaseConfig);
 

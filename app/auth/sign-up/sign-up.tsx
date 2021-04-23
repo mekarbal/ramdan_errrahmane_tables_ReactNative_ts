@@ -6,38 +6,50 @@ import {
 } from 'react-native';
 import { Auth } from '../../shared/models/auth.model'
 import {AuthEnum} from '../../shared/enums/auth.enum';
-import { auth } from 'react-native-firebase';
+// import { user } from 'react-native-firebase';
 import ButtonShared from '../../shared/components/ButtonShared';
-// import { RamadanController } from './controllers/ramadan-controller';
+import firebase from '../../../firebase/firebase';
+
 
 export function SignUp(props:any) {
-    // let ramadanController = new  RamadanController();
+
     // let authEnum = AuthEnum;
-    
     const [first_name, onChangeFname] = React.useState(""); 
     const [last_name, onChangeLname] = React.useState(""); 
     const [email, onChangeEmail] = React.useState(""); 
     const [password, onChangePassword] = React.useState("");
 
-    function add(){
-        console.log('add pressed')
-        let auth = new Auth();
+    async function add(){
+        // console.log('add pressed')
+        await firebase.auth()
+                .createUserWithEmailAndPassword(email,password)
+                .then((res) => {
+                    console.log(res.user);
+                    
+                    navigateToSignIn();
+                }).catch((err) => {
+                    console.log(err);
+                    
+                });
+        // registerAuth(first_name,last_name,email,password)
+       
+        
+        // let auth = new Auth();
 
-        auth.email=email;
-        auth.password=password;
+        // auth.email=email;
+        // auth.password=password;
 
-        // ramadanController.Add(ramadan);
     }
-    function navigateToSignUp() {
+    
+    function navigateToSignIn() {
         props.navigation.navigate('Sign in')
     }
+    
     return (
         <ScrollView style={styles.container}>
             {/* <Text>  {authEnum.BOOKED}  {authEnum.FREE}</Text> */}
-            {/* <Text> {(email === '') ? '' : 'Bonjour, Je suis : '+ email} </Text> */}
 
-            {/* <Text> {(password === '') ? '' : 'Mon password est : '+ password} </Text> */}
-            <Image source={require('../../../assets/logo.png')} />
+            {/* <Image  source={require('../../../assets/logo.png')} /> */}
             <TextInput
                 style={styles.input}
                 placeholder={'first name'}
@@ -69,12 +81,12 @@ export function SignUp(props:any) {
             />
             <ButtonShared text="SIGN UP"
                 onPress={() => {
-                    Alert.alert('Sign in');
+                    // Alert.alert('Sign in');
                     add()
                 }}
             /> 
             <Text style={styles.signLink}>Have an account ? 
-                <Text style={styles.toSignUp} onPress={() =>navigateToSignUp()}>
+                <Text style={styles.toSignUp} onPress={() =>navigateToSignIn()}>
                     &nbsp; Sign In
                 </Text>
             </Text>

@@ -2,43 +2,47 @@ import React,{useEffect} from 'react';
 import {
     ScrollView,StyleSheet,Text,
     TextInput,Alert,
-    Image,Linking
+    Image
 } from 'react-native';
 import { Auth } from '../../shared/models/auth.model'
 import {AuthEnum} from '../../shared/enums/auth.enum';
 import { auth } from 'react-native-firebase';
 import ButtonShared from '../../shared/components/ButtonShared';
-// import { RamadanController } from './controllers/ramadan-controller';
+import firebase from '../../../firebase/firebase';
 
 export function SignIn(props:any) {
-    // let ramadanController = new  RamadanController();
     // let authEnum = AuthEnum;
     
     const [email, onChangeEmail] = React.useState(""); 
     const [password, onChangePassword] = React.useState("");
 
     function add(){
-        console.log('add pressed')
-        let auth = new Auth();
+        console.log('Sign in')
+        // let auth = new Auth();
 
-        auth.email=email;
-        auth.password=password;
-
-        // ramadanController.Add(ramadan);
+        // auth.email=email;
+        // auth.password=password;
+        try {
+            firebase.auth().signInWithEmailAndPassword(email, password).then(res=>{
+                console.log(res);
+                props.navigation.navigate('Home')
+            })
+        } catch (err) {
+            console.log(err.message);
+        }
     }
+    
     function navigateToSignUp() {
         props.navigation.navigate('Sign up')
     }
 
-    function navigateToHome() {
-        props.navigation.navigate('Home')
-    }
+    // function navigateToHome() {
+    //     props.navigation.navigate('Home')
+    // }
+
     return (
         <ScrollView style={styles.container}>
             {/* <Text>  {authEnum.BOOKED}  {authEnum.FREE}</Text> */}
-            {/* <Text> {(email === '') ? '' : 'Bonjour, Je suis : '+ email} </Text> */}
-
-            {/* <Text> {(password === '') ? '' : 'Mon password est : '+ password} </Text> */}
             <Image source={require('../../../assets/logo.png')} />
             <TextInput
                 style={styles.input}
@@ -56,7 +60,10 @@ export function SignIn(props:any) {
                 value={password}
             />
             <ButtonShared text="SIGN IN"
-                onPress={() => navigateToHome()}
+                onPress={() => {
+                    // Alert.alert(email);
+                    add()
+                }}
             /> 
             <Text style={styles.signLink}>Don't have an account yet ? 
                 <Text style={styles.toSignUp} onPress={() =>navigateToSignUp()}>
@@ -76,8 +83,6 @@ const styles = StyleSheet.create({
         padding:30,
         minWidth:370,
         backgroundColor:'skyblue'
-
-
     },
     input: {
         height: 40,
@@ -85,7 +90,6 @@ const styles = StyleSheet.create({
         padding:8,
         borderBottomWidth:1,
         borderBottomColor:'#fff',
-
     },
     signLink: {
         marginTop:15,
