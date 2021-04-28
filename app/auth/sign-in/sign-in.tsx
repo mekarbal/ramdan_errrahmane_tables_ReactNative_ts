@@ -17,11 +17,6 @@ export function SignIn(props:any) {
     const [password, onChangePassword] = React.useState("");
 
     function add(){
-        console.log('Sign in')
-        // let auth = new Auth();
-
-        // auth.email=email;
-        // auth.password=password;
         try {
             firebase.auth().signInWithEmailAndPassword(email, password).then(res=>{
                 console.log(res);
@@ -35,10 +30,6 @@ export function SignIn(props:any) {
     function navigateToSignUp() {
         props.navigation.navigate('Sign up')
     }
-
-    // function navigateToHome() {
-    //     props.navigation.navigate('Home')
-    // }
 
     return (
         <ScrollView style={styles.container}>

@@ -3,7 +3,6 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import AddAssistance from './app/assistances/screens/AddAssistance';
 import Constants from 'expo-constants'
-import firebase from 'firebase';
 import ListNavigation from './app/shared/components/ListNavigation';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -23,7 +22,7 @@ import AddBreakfast from './app/breakfasts/screens/AddBreakfast';
 // };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
 
 const Stack=createStackNavigator()
 

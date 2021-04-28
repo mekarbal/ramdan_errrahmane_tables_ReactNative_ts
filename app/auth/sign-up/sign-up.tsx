@@ -9,6 +9,7 @@ import {AuthEnum} from '../../shared/enums/auth.enum';
 // import { user } from 'react-native-firebase';
 import ButtonShared from '../../shared/components/ButtonShared';
 import firebase from '../../../firebase/firebase';
+import registerAuth from '../services/auth.service'
 
 
 export function SignUp(props:any) {
@@ -25,20 +26,12 @@ export function SignUp(props:any) {
                 .createUserWithEmailAndPassword(email,password)
                 .then((res) => {
                     console.log(res.user);
-                    
                     navigateToSignIn();
                 }).catch((err) => {
-                    console.log(err);
+            console.log(err);
                     
-                });
-        // registerAuth(first_name,last_name,email,password)
-       
-        
-        // let auth = new Auth();
-
-        // auth.email=email;
-        // auth.password=password;
-
+        });
+        registerAuth(first_name,last_name,email,password)
     }
     
     function navigateToSignIn() {
